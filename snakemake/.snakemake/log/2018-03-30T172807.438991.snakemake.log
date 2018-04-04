@@ -1,0 +1,72 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	bam_index_and_2bw
+	1	build_index
+	12	feature_count
+	10	genome_map
+	9	rRNA_map
+	11	sam_2_uniquebam
+	10	sort_STAR_result
+	11	uniquebam_sort_and_index
+	77
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate2
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate1_sort
+    jobid: 3
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureStat.log
+    jobid: 38
+    wildcards: dataset=PS2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq.bam
+    jobid: 32
+    wildcards: dataset=PS1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/NT1/NT1_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/NT1/NT1_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate2
+    jobid: 33
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS2.bw
+    jobid: 25
+    wildcards: dataset=PS2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Error in rule feature_count:
+    jobid: 38
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureStat.log
+
+RuleException:
+CalledProcessError in line 144 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Command ' set -euo pipefail;  Rscript /data2/zhoulab/yuxinghai/hg19_jlRNAseq/script/featurecount.R ' returned non-zero exit status 1
+  File "/data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py", line 144, in __rule_feature_count
+  File "/data1/zhoulab/yuxinghai/.conda/envs/py35/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+Finished job 32.
+1 of 77 steps (1%) done
+Finished job 3.
+2 of 77 steps (3%) done
+Finished job 33.
+3 of 77 steps (4%) done
+Finished job 25.
+4 of 77 steps (5%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/.snakemake/log/2018-03-30T172807.438991.snakemake.log

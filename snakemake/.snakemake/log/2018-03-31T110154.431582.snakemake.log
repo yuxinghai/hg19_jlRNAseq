@@ -1,0 +1,226 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	2	bam_index_and_2bw
+	12	feature_count
+	1	genome_map
+	1	sam_2_uniquebam
+	2	uniquebam_sort_and_index
+	19
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam
+    jobid: 67
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate1_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate2_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_SortAligned.out.sam
+    jobid: 63
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 63.
+1 of 19 steps (5%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq.bam
+    jobid: 44
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 67.
+2 of 19 steps (11%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F2.bw
+    jobid: 4
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 44.
+3 of 19 steps (16%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam
+    jobid: 6
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 6.
+4 of 19 steps (21%) done
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureStat.log
+    jobid: 46
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureStat.log
+    jobid: 15
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureStat.log
+    jobid: 8
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureStat.log
+    jobid: 12
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureStat.log
+    jobid: 54
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureStat.log
+    jobid: 75
+    wildcards: dataset=PS1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureStat.log
+    jobid: 61
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureStat.log
+    jobid: 62
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureStat.log
+    jobid: 20
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureStat.log
+    jobid: 27
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureStat.log
+    jobid: 74
+    wildcards: dataset=PS2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule feature_count:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureStat.log
+    jobid: 37
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F1.bw
+    jobid: 40
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 135 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureCounts.txt
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureStat.log
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Finished job 4.
+5 of 19 steps (26%) done
+Finished job 40.
+6 of 19 steps (32%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/.snakemake/log/2018-03-31T110154.431582.snakemake.log

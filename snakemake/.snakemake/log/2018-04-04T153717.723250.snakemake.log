@@ -1,0 +1,93 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	12	bam_index_and_2bw
+	13
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N02_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N02_Reverse.bw
+    jobid: 52
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=N02
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F2_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F2_Reverse.bw
+    jobid: 23
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=F2
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G1_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G1_Reverse.bw
+    jobid: 5
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=G1
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT1_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT1_Reverse.bw
+    jobid: 67
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=NT1
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V2_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V2_Reverse.bw
+    jobid: 30
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=V2
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G2_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G2_Reverse.bw
+    jobid: 69
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=G2
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT2_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT2_Reverse.bw
+    jobid: 78
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=NT2
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS2/PS2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS2_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS2_Reverse.bw
+    jobid: 75
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=PS2
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N01_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N01_Reverse.bw
+    jobid: 53
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=N01
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V1_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V1_Reverse.bw
+    jobid: 59
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=V1
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F1/F1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F1_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/F1_Reverse.bw
+    jobid: 79
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=F1
+
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS1_Forward.bw, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS1_Reverse.bw
+    jobid: 77
+    wildcards: work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results, dataset=PS1
+

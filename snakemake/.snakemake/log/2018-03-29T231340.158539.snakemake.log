@@ -1,0 +1,5 @@
+Building DAG of jobs...
+MissingInputException in line 56 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing input files for rule rRNA_map:
+/zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/h_2/913/h_2/913_R2.fq.gz
+/zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/h_2/913/h_2/913_R1.fq.gz

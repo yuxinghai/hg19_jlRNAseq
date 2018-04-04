@@ -1,0 +1,3 @@
+NameError in line 137 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+name 'dataset' is not defined
+  File "/data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py", line 137, in <module>

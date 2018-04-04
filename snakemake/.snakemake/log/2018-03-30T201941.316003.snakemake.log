@@ -1,0 +1,513 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	all
+	11	bam_index_and_2bw
+	1	build_index
+	12	feature_count
+	10	genome_map
+	8	rRNA_map
+	10	sam_2_uniquebam
+	9	sort_STAR_result
+	11	uniquebam_sort_and_index
+	73
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate1_sort
+    jobid: 26
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam
+    jobid: 13
+    wildcards: dataset=PS1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/G1/G1_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/G1/G1_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate2
+    jobid: 74
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N01/N01Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_SortAligned.out.sam
+    jobid: 14
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 14.
+1 of 73 steps (1%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq.bam
+    jobid: 20
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 13.
+2 of 73 steps (3%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/PS1/PS1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/PS1.bw
+    jobid: 17
+    wildcards: dataset=PS1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 26.
+3 of 73 steps (4%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT1/NT1Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_SortAligned.out.sam
+    jobid: 70
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 20.
+4 of 73 steps (5%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam
+    jobid: 66
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 74.
+5 of 73 steps (7%) done
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/V2/V2_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/V2/V2_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate2
+    jobid: 62
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate1_sort
+    jobid: 57
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 70.
+6 of 73 steps (8%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq.bam
+    jobid: 67
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 66.
+7 of 73 steps (10%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N01/N01_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N01.bw
+    jobid: 79
+    wildcards: dataset=N01, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 67.
+8 of 73 steps (11%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam
+    jobid: 68
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 57.
+9 of 73 steps (12%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G1/G1Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_SortAligned.out.sam
+    jobid: 61
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 68.
+10 of 73 steps (14%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT1/NT1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT1.bw
+    jobid: 75
+    wildcards: dataset=NT1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 62.
+11 of 73 steps (15%) done
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate1_sort
+    jobid: 8
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/NT2/NT2_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/NT2/NT2_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate2
+    jobid: 39
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+Finished job 61.
+12 of 73 steps (16%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq.bam
+    jobid: 58
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 58.
+13 of 73 steps (18%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam
+    jobid: 19
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 8.
+14 of 73 steps (19%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V2/V2Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_SortAligned.out.sam
+    jobid: 41
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 19.
+15 of 73 steps (21%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G1/G1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G1.bw
+    jobid: 4
+    wildcards: dataset=G1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 17.
+16 of 73 steps (22%) done
+Finished job 39.
+17 of 73 steps (23%) done
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/N02/N02_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/N02/N02_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate2
+    jobid: 36
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate1_sort
+    jobid: 48
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 41.
+18 of 73 steps (25%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq.bam
+    jobid: 77
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 77.
+19 of 73 steps (26%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    jobid: 52
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 48.
+20 of 73 steps (27%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/NT2/NT2Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_SortAligned.out.sam
+    jobid: 1
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 52.
+21 of 73 steps (29%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V2/V2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V2.bw
+    jobid: 60
+    wildcards: dataset=V2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 79.
+22 of 73 steps (30%) done
+Finished job 36.
+23 of 73 steps (32%) done
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/V1/V1_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/V1/V1_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate2
+    jobid: 46
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate1_sort
+    jobid: 76
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 1.
+24 of 73 steps (33%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq.bam
+    jobid: 45
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 45.
+25 of 73 steps (34%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam
+    jobid: 42
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 75.
+26 of 73 steps (36%) done
+Finished job 76.
+27 of 73 steps (37%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/N02/N02Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_SortAligned.out.sam
+    jobid: 5
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 42.
+28 of 73 steps (38%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/NT2/NT2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/NT2.bw
+    jobid: 65
+    wildcards: dataset=NT2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 46.
+29 of 73 steps (40%) done
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate1_sort
+    jobid: 47
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/G2/G2_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/G2/G2_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate2
+    jobid: 10
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+Finished job 5.
+30 of 73 steps (41%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq.bam
+    jobid: 33
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 4.
+31 of 73 steps (42%) done
+Finished job 33.
+32 of 73 steps (44%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam
+    jobid: 34
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 47.
+33 of 73 steps (45%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/V1/V1Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_SortAligned.out.sam
+    jobid: 78
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 34.
+34 of 73 steps (47%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/N02/N02_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/N02.bw
+    jobid: 25
+    wildcards: dataset=N02, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 10.
+35 of 73 steps (48%) done
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate1_sort
+    jobid: 11
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/F2/F2_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/F2/F2_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate2
+    jobid: 40
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+Finished job 78.
+36 of 73 steps (49%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq.bam
+    jobid: 37
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 37.
+37 of 73 steps (51%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam
+    jobid: 6
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 6.
+38 of 73 steps (52%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/V1/V1_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/V1.bw
+    jobid: 15
+    wildcards: dataset=V1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 11.
+39 of 73 steps (53%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/G2/G2Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_SortAligned.out.sam
+    jobid: 69
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 60.
+40 of 73 steps (55%) done
+Finished job 40.
+41 of 73 steps (56%) done
+
+rule rRNA_map:
+    input: /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/F1/F1_R1.fq.gz, /zhounas/zhoulab/backup/xhyu/20171012JL/HB160055-01武汉大学12个人lncRNA建库测序过滤任务单_VIP/ANHB160055_HB160055-01_2017-01-09/Cleandata/F1/F1_R2.fq.gz
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate1, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate2
+    jobid: 30
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+    threads: 20
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate1_sort
+    jobid: 32
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 69.
+42 of 73 steps (58%) done
+
+rule sam_2_uniquebam:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_SortAligned.out.sam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq.bam
+    jobid: 50
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 50.
+43 of 73 steps (59%) done
+
+rule uniquebam_sort_and_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam
+    jobid: 18
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 32.
+44 of 73 steps (60%) done
+
+rule genome_map:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F2/F2Unmapped.out.mate1_sort
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/F2/F2_SortAligned.out.sam
+    jobid: 63
+    wildcards: dataset=F2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 18.
+45 of 73 steps (62%) done
+
+rule bam_index_and_2bw:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/sorted/G2/G2_uniq_sort.bam.bai, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/bw/G2.bw
+    jobid: 49
+    wildcards: dataset=G2, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Finished job 65.
+46 of 73 steps (63%) done
+Finished job 30.
+47 of 73 steps (64%) done
+
+rule build_index:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19.fa, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19_encodev19_rRNA.fa, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/gencode.v19.annotation.gtf
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19_index/SAindex, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/rRNA/SAindex
+    jobid: 35
+    wildcards: anno_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno
+    threads: 20
+
+rule sort_STAR_result:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate2, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate1
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate2_sort, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/02_mapping/rRNA/F1/F1Unmapped.out.mate1_sort
+    jobid: 2
+    wildcards: dataset=F1, work_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results
+
+Error in rule build_index:
+    jobid: 35
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19_index/SAindex, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/rRNA/SAindex
+
+RuleException:
+CalledProcessError in line 50 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Command ' set -euo pipefail;  
+        STAR --runThreadN 20 --runMode genomeGenerate --genomeDir /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/rRNA --genomeFastaFiles /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19_encodev19_rRNA.fa --genomeSAindexNbases 6 --outFileNamePrefix /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/rRNA/hg19_rRNA
+
+        STAR --runThreadN 20 --runMode genomeGenerate --genomeDir /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19_index --genomeFastaFiles /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/hg19.fa --sjdbGTFfile /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/gencode.v19.annotation.gtf --sjdbOverhang 149 --genomeSAindexNbases 12 --outFileNamePrefix /data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/genome/hg19 ' returned non-zero exit status 102
+  File "/data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py", line 50, in __rule_build_index
+  File "/data1/zhoulab/yuxinghai/.conda/envs/py35/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+Removing output files of failed job build_index since they might be corrupted:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/anno/rRNA/SAindex
+Finished job 63.
+48 of 73 steps (66%) done
+Finished job 2.
+49 of 73 steps (67%) done
+Finished job 25.
+50 of 73 steps (68%) done
+Finished job 15.
+51 of 73 steps (70%) done
+Finished job 49.
+52 of 73 steps (71%) done
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/.snakemake/log/2018-03-30T201941.316003.snakemake.log

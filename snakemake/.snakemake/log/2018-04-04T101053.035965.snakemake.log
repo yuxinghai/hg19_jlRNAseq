@@ -1,0 +1,47 @@
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 30
+Rules claiming more threads will be scaled down.
+Job counts:
+	count	jobs
+	1	DEgene_filter_and_plot_NEAT1_V2
+	1	all
+	1	sample_distance_plot
+	3
+
+rule sample_distance_plot:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureCounts.txt
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/distance_PNG_300_lengend_dpi.png
+    jobid: 73
+    wildcards: results_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount
+
+
+rule DEgene_filter_and_plot_NEAT1_V2:
+    input: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/G2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N01_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/N02_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/NT2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/PS2_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V1_featureCounts.txt, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/V2_featureCounts.txt
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/NEAT1_V2/NEAT1_V2_volcan_PNG_300_lengend_dpi.png, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/NEAT1_V2/DE_number.pdf, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/up, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/down, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/sig, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/DEgene/NEAT1_V2/ano_downgene.tsv, /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/DEgene/NEAT1_V2/ano_upgene.tsv
+    jobid: 16
+    wildcards: results_dir=/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount
+
+Error in rule sample_distance_plot:
+    jobid: 73
+    output: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/distance_PNG_300_lengend_dpi.png
+
+RuleException:
+CalledProcessError in line 161 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Command ' set -euo pipefail;  Rscript /data2/zhoulab/yuxinghai/hg19_jlRNAseq/script/distance.R ' returned non-zero exit status 1
+  File "/data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py", line 161, in __rule_sample_distance_plot
+  File "/data1/zhoulab/yuxinghai/.conda/envs/py35/lib/python3.5/concurrent/futures/thread.py", line 55, in run
+Waiting at most 5 seconds for missing files.
+MissingOutputException in line 212 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
+Missing files after 5 seconds:
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/NEAT1_V2/NEAT1_V2_volcan_PNG_300_lengend_dpi.png
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/figure/NEAT1_V2/DE_number.pdf
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/up
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/down
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/gene_name/NEAT1_V2/sig
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/DEgene/NEAT1_V2/ano_downgene.tsv
+/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/DEgene/NEAT1_V2/ano_upgene.tsv
+This might be due to filesystem latency. If that is the case, consider to increase the wait time with --latency-wait.
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/.snakemake/log/2018-04-04T101053.035965.snakemake.log
