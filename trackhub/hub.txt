@@ -1,0 +1,6 @@
+hub JLRNAseq
+shortLabel JLRNAseq
+longLabel JLRNAseq
+genomesFile genomes.txt
+email yuxinghai@whu.edu.cn
+        

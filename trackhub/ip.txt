@@ -1,0 +1,1 @@
+ftp://202.114.67.213:yuxinghai/JLRNAseq/hub.txt
