@@ -30,7 +30,7 @@ rule all:
         expand("{work_dir}/03_featurecount/F1_featureCounts.txt", work_dir=work_dir),
         expand("{work_dir}/03_featurecount/F1_featureStat.log", work_dir=work_dir),
 	expand("{work_dir}/02_mapping/sorted/{dataset}/{dataset}_uniq_sort.bam.bai",work_dir=work_dir,dataset=samples),
-        expand("{work_dir}/bw/{dataset}_Forward.bw",work_dir=work_dir,dataset=samples),
+        expand("{work_dir}/bw/{dataset}.Forward.bw",work_dir=work_dir,dataset=samples),
         expand("{results_dir}/figure/distance_PNG_300_lengend_dpi.png",results_dir=results_dir),
         expand("{results_dir}/DEgene/PSF/ano_downgene.tsv",results_dir=results_dir),
         expand("{results_dir}/DEgene/NONO/ano_downgene.tsv",results_dir=results_dir),
@@ -131,8 +131,8 @@ rule bam_index_and_2bw:
 
     output:
         "{work_dir}/02_mapping/sorted/{dataset}/{dataset}_uniq_sort.bam.bai",
-        "{work_dir}/bw/{dataset}_Forward.bw",
-        "{work_dir}/bw/{dataset}_Reverse.bw"
+        "{work_dir}/bw/{dataset}.Forward.bw",
+        "{work_dir}/bw/{dataset}.Reverse.bw"
 
     shell:
         """

@@ -1,5 +1,0 @@
-Building DAG of jobs...
-MissingInputException in line 19 of /data2/zhoulab/yuxinghai/hg19_jlRNAseq/snakemake/hg19_Snakefile.py:
-Missing input files for rule all:
-/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureCounts.txt
-/data2/zhoulab/yuxinghai/hg19_jlRNAseq/results/03_featurecount/F1_featureStat.log
